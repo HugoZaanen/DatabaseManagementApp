@@ -24,5 +24,79 @@ namespace DatabaseManagementApp
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var db = new AdventureWorksEntities();
+
+            var query = from p in db.Products
+                        select p;
+
+            var results = query.ToList();
+
+            dg.ItemsSource = results;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var db = new AdventureWorksEntities();
+
+            var query = from p in db.Products
+                        select p.ProductCategory;
+
+            var results = query.ToList();
+
+            dg.ItemsSource = results;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var db = new AdventureWorksEntities();
+
+            var query = from p in db.Products
+                        orderby p.ListPrice descending
+                        select p;
+            
+            var results = query.Take(20).ToList();
+                      
+            dg.ItemsSource = results;
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            dg.ItemsSource = null;
+            var db = new AdventureWorksEntities();
+
+            var query = from p in db.Products
+                        select new
+                        {
+                            p.ProductID,
+                            p.Name,
+                            p.Color,
+                            p.ListPrice,
+                            CategoryName = p.ProductCategory.Name
+                        };
+
+            MessageBox.Show(query.ToString());
+
+            var results = query.ToList();
+
+            dg.ItemsSource = results;
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            var db = new AdventureWorksEntities();
+
+            var nieuwe = new ProductCategory();
+            nieuwe.Name = "The game";
+            nieuwe.ModifiedDate = DateTime.Now;
+            nieuwe.rowguid = Guid.NewGuid();
+
+            db.ProductCategories.Add(nieuwe);
+
+            //stuur de wijsingingen naar de DB toe
+            db.SaveChanges();
+        }
     }
 }

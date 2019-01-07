@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="Button" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <DataGrid x:Name="dg" HorizontalAlignment="Left" Height="313" Margin="10,49,0,0" VerticalAlignment="Top" Width="772"/>
+        <Button Content="Query" HorizontalAlignment="Left" Margin="118,24,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <Button Content="Query price" HorizontalAlignment="Left" Margin="218,24,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
+        <Button Content="query beperkt" HorizontalAlignment="Left" Margin="323,24,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="433,24,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_4"/>
+
     </Grid>
 </Window>
